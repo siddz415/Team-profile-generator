@@ -5,7 +5,7 @@ const Intern = require('./lib/Intern');
 const fs = require('fs');
 const path = require('path');
 const output_dir = path.resolve(__dirname, 'output')
-const outputPath = path.join(output_dir, 'profile.html');
+const outputPath = path.join(output_dir, 'index.html');
 const teamMembers = [];
 
 const promptManager = () => {
