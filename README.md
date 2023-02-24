@@ -15,7 +15,7 @@ credits
 The user should clone the repository from GitHub and download Node.js. This app also requires a file system and inquirer module. This application uses Jest for testing.
 
 ## Usage
-![](assets\ezgif.com-video-to-gif.gif)
+![](./assets/ezgif.com-video-to-gif.gif)
 
 
 ## Screenshot
