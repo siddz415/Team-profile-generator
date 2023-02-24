@@ -68,7 +68,6 @@ const promptManager = () => {
             }
         },
     ]).then(answers => {
-        console.log(answers);
         const manager = new Manager(answers.name, answers.employeeId, answers.email, answers.officeNumber)
         teamMembers.push(manager);
         promptMenu();
@@ -76,6 +75,39 @@ const promptManager = () => {
 };
 
 const generateHtml = () => {
+    const employeeCards = teamMembers.map(teamMember => {
+        const roleData = {};
+        const getIcon = () => {
+            if (teamMember.getRole() === 'Manager') {
+                roleData.label = 'Office Id'
+                roleData.value = teamMember.officeNumber;
+                return 'content_paste';
+            } else if (teamMember.getRole() === 'Engineer') {
+                roleData.label = 'Github Username'
+                roleData.value = teamMember.github;
+                return 'laptop_mac';
+            } else {
+                roleData.label = 'School'
+                roleData.value = teamMember.school;
+                return 'assignment_ind';
+            }
+        }
+        return `<div class="col-4 mt-4">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h3>${teamMember.name}</h3>
+                    <h4>${teamMember.getRole()}</h4><i class="material-icons">${getIcon()}</i>
+                </div>
+      
+                <div class="card-body">
+                    <p class="id">ID:${teamMember.id}</p>
+                    <p class="email">Email: <a href="mailto:${teamMember.email}">${teamMember.email}</a></p>
+                    <p class="office">${roleData.label}: ${roleData.value}</p>
+                </div>
+      
+            </div>
+        </div>`
+    })
     return `<!DOCTYPE html>
     <html lang="en">
     
@@ -98,56 +130,13 @@ const generateHtml = () => {
             <div class="container">
                 <div class="row justify-content-center" id="team-cards">
                     <!--Team Cards-->
-           ${teamMembers.map(teamMember => {
-            return `<div class="col-4 mt-4">
-            <div class="card h-100">
-                <div class="card-header">
-                    <h3>${teamMember.name}</h3>
-                    <h4>Manager</h4><i class="material-icons">content_paste</i>
-                </div>
-      
-                <div class="card-body">
-                    <p class="id">ID: 12345</p>
-                    <p class="email">Email: <a href="mailto:johnsmith@yahoo.com">johnsmith@yahoo.com</a></p>
-                    <p class="office">Office Number: 12</p>
-                </div>
-      
-            </div>
-        </div>`
-           })}         
-      
-      
-      <div class="col-4 mt-4">
-          <div class="card h-100">
-              <div class="card-header">
-                  <h3>Siddharth</h3>
-                  <h4>Engineer</h4><i class="material-icons">laptop_mac</i>
-              </div>
-    
-              <div class="card-body">
-                  <p class="id">ID: 54321</p>
-                  <p class="email">Email: <a href="mailto:siddz415@gmail.com">siddz415@gmail.com</a></p>
-                  <p class="github">Github: <a href="https://github.com/siddz415">siddz415</a></p>
-              </div>
-    
-          </div>
-      </div>
-      
-      <div class="col-4 mt-4">
-          <div class="card h-100">
-              <div class="card-header">
-                  <h3>Jason</h3>
-                  <h4>Intern</h4><i class="material-icons">assignment_ind</i>
-              </div>
-    
-              <div class="card-body">
-                  <p class="id">ID: 19888</p>
-                  <p class="email">Email:<a href="mailto:jack@aol.com">jasonc@yahoo.com</a></p>
-                  <p class="school">School: UCD</p>
-              </div>
-      </div>
+           ${employeeCards.join('')}
+        
+             
     </div>
-    
+    </div>
+    </main>
+    </body>
     </html>`
 }
 
@@ -164,15 +153,23 @@ const promptMenu = () => {
         switch (answers.name) {
             case 'Add an Engineer':
                 promptEngineer();
-                console.log('add engineer');
+
                 break;
             case 'Add an Intern':
                 promptIntern();
-                console.log('add Intern');
+
                 break;
             default:
-                generateHtml();
-                console.log('Finish');
+                const html = generateHtml();
+                fs.writeFile(outputPath, html, (err) => {
+                    if (!err) {
+                        console.log('success');
+
+                    } else {
+                        console.log(err);
+                    }
+                })
+
         }
     })
 }
@@ -238,13 +235,12 @@ const promptEngineer = () => {
             }
         },
     ]).then(answers => {
-        console.log(answers);
         const engineer = new Engineer(answers.name, answers.employeeId, answers.email, answers.github)
         teamMembers.push(engineer);
         promptMenu();
     })
 };
-promptEngineer();
+
 
 const promptIntern = () => {
     return inquirer.prompt([
@@ -306,10 +302,8 @@ const promptIntern = () => {
             }
         },
     ]).then(answers => {
-        console.log(answers);
         const intern = new Intern(answers.name, answers.employeeId, answers.email, answers.school)
         teamMembers.push(intern);
         promptMenu();
     })
 };
-promptIntern();
