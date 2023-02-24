@@ -1,31 +1,71 @@
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title></title>
 </head>
+
 <body>
-    <div class="row">
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
+    <header>
+        <nav class="navbar" id="navbar">
+            <span class="navbar-brand mb-0 h1 w-100 text-center" id="navbar-text">Team Profile</span>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="row justify-content-center" id="team-cards">
+                <!--Team Cards-->
+                
+  <div class="col-4 mt-4">
+      <div class="card h-100">
+          <div class="card-header">
+              <h3>John</h3>
+              <h4>Manager</h4><i class="material-icons">content_paste</i>
           </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
+
+          <div class="card-body">
+              <p class="id">ID: 12345</p>
+              <p class="email">Email: <a href="mailto:johnsmith@yahoo.com">johnsmith@yahoo.com</a></p>
+              <p class="office">Office Number: 12</p>
           </div>
-        </div>
+
       </div>
-</body>
+  </div>
+  
+  <div class="col-4 mt-4">
+      <div class="card h-100">
+          <div class="card-header">
+              <h3>Siddharth</h3>
+              <h4>Engineer</h4><i class="material-icons">laptop_mac</i>
+          </div>
+
+          <div class="card-body">
+              <p class="id">ID: 54321</p>
+              <p class="email">Email: <a href="mailto:siddz415@gmail.com">siddz415@gmail.com</a></p>
+              <p class="github">Github: <a href="https://github.com/siddz415">siddz415</a></p>
+          </div>
+
+      </div>
+  </div>
+  
+  <div class="col-4 mt-4">
+      <div class="card h-100">
+          <div class="card-header">
+              <h3>Jason</h3>
+              <h4>Intern</h4><i class="material-icons">assignment_ind</i>
+          </div>
+
+          <div class="card-body">
+              <p class="id">ID: 19888</p>
+              <p class="email">Email:<a href="mailto:jack@aol.com">jasonc@yahoo.com</a></p>
+              <p class="school">School: UCD</p>
+          </div>
+  </div>
+</div>
+
 </html>
