@@ -23,7 +23,7 @@ The user should clone the repository from GitHub and download Node.js. This app 
 
 
 ## Tests
-Run npm test to run Jest for tests.
+Run npm test to run Jest.
 
 ## credits
 getBootstrap.com
