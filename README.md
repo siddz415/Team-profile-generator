@@ -21,6 +21,9 @@ The user should clone the repository from GitHub and download Node.js. This app 
 ## Screenshot
 ![Screenshot of the Site](./assets/tpg.png) 
 
+## Github link
+https://github.com/siddz415/Team-profile-generator
+
 
 ## Tests
 Run npm test to run Jest.
